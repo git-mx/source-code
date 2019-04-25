@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 全局的bean放在此配置文件中进行加载-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--设置启用注解，在新版本的Spring中已经无需再写如下配置，只要是Spring的项目就默认启用了注解功能,如果在本配置文件中使用了-->
+    <!--<context:component-scan>则不需要写<context:annotation-config />-->
+    <!--在更早期的版本的Spring中是按照下面这种方式来写的，后面新版本的提供了简化写法-->
+    <!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor "/> -->
+    <!--其实就是向Spring容器注入一些BeanPostProcess-->
+    <!--<context:annotation-config />-->
+    <!--指定aop的代理方式-->
+    <!--proxy-target-class-->
+    <!--proxy-target-class=false时，代理方式是使用JDK的动态代理来实现。这时如果被代理的对象如果实现了某个接口，Spring则会
+    选择JDK动态代理策略动态的创建一个接口实现类（动态代理类）来代理目标对象，这时在动态代理类和实际被代理的对象类之间进行转换时
+    会抛出java.lang.ClassCastException异常，这就是为什么不将proxy-target-class设置为true时，找不到bean的原因
+    proxy-target-class=true时，如果被代理的对象实现了至少一个接口，则会使用JDK动态代理，所有该目标类实现的接口都将被代理。
+    如果被代理的对象没有实现任何接口，则创建一个CGLIB代理-->
+    <!--expose-proxy-->
+    <!--设置成true以后在内部调用也会实现aop的功能-->
+    <!--https://www.jianshu.com/p/6534945eb3b5-->
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
+    <!--将domain、dao、service、common、util包加载到全局的ioc容器中，让应用程序中所有的servlet容器都能访问到这些bean-->
+    <!--将数据库配置也加到全局的ioc容器中-->
+    <!--但是controller除外，让每个servlet容器去加载它自己需要的控制器bean-->
+    <context:component-scan base-package="com.shyfay.springmvc">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--定义全局类-->
+    <bean id="aspect" class="com.shyfay.springmvc.TestAopAspect"/>
+    <!--如果类中不写@Service注解需要在这里配置-->
+    <!--<bean id="testService" class="com.shyfay.springmvc.service.TestServiceIml" />-->
+</beans>

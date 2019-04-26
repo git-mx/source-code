@@ -24,9 +24,13 @@
   <!--指定Spring根上下文要加载的类，即Spring的IOC容器需要加载的类，在该容器内加载的类能被整个应用程序使用-->
   <!--一般的单独的基于SpringMVC的web项目不需要以下两个配置，直接配置<servlet>即可-->
   <context-param>
-    <param-name>rootContext</param-name>
+    <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
+  <!--<context-param>-->
+    <!--<param-name>log4jConfigLocation</param-name>-->
+    <!--<param-value>classpath:log4j.xml</param-value>-->
+  <!--</context-param>-->
   <!--启动监听器，监听tomcat容器的初始化事件，监听到该事件后，ContextLoaderListener的contextInitialized方法会被调用，在该方法里会初始化一个Spring-->
   <!--全局上下文，根上下文WebApplicationContext。这个上下文就是Spring的IOC容器。-->
   <!--值得注意的是，这个<listener>标签必须要写在<context-param>标签之后，否则要报错，另外，这个<listener>标签可以不写，如果不写的话默认就采用的是-->

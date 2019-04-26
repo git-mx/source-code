@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 全局的bean放在此配置文件中进行加载-->
+<!--
+XML文件的验证模式有两种DTD和XSD。Spring用来检验验证模式的办法就是判断是否包
+含DOCTYPE，如果包含就是DTD，否则就是XSD，这就是为什么我们的spring-mvc.xml不
+包含DOCTYPE的原因。因为要使用的那些节点全部都存放在Spring的XML Schema中。所
+以必须要使用XSD验证模式。
+-	DTD（Document Type Definition）即文档类型定
+义，是一种XML约束模式语言，是XML文件的验证机制，同时也是XML文件的一部分。
+DTD是一种保证XML文档格式正确的有效方法，可以通过比较XML文档和DTD文件来看文
+档是否符合规范，元素和标签是否使用正确。一个DTD文档包含：元素的定义规则，元素
+间关系的定义规则，元素可以使用的属性，可使用的实体或符号规则。要使用DTD验证模
+式的时候还需要在XML文件的头部进行声明，就像下面这样：
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd">
+-	XSD XML Schemas Definition。XML Schema描述了XML文档的接口。可以用一个指定
+的XML Schema来验证一个某个XML文档。文档设计者可以通过XML Schema指定XML文
+档所允许的结构和内容，并可据此检查XML文档是否是有效的。XML Schema本身就是
+XML文档，它符合XML文档的语法结构。在使用XML Schema文档对XML实例文档进行
+检验时，除了要声明名称空间外
+例如：xmlns=http://www.springframework.org/schema/beans
+还必须要指定该名称空间所对应的XML Schema文档的存储位置。通过schemaLocation
+来指定，它包含两个部分，一个是命名空间的URI，另一个部分就是该名称空间所标识
+的XSD文件URL
+例如：http://www.springframework.org/schema/beans http://www.springframework
+.org/schema/beans/spring-beans.xsd
+
+-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"

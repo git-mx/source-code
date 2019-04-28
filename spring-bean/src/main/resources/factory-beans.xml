@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--从BenFactory获取bean-->
+    <bean id="benzCar1" class="com.shyfay.bean.factory.CarStaticFactory" factory-method="getCar">
+        <constructor-arg value="1" />
+    </bean>
+    <!--从BenFactory获取bean-->
+    <bean id="bmwCar1" class="com.shyfay.bean.factory.CarStaticFactory" factory-method="getCar">
+        <constructor-arg value="2" />
+    </bean>
+    <!--从BenFactory获取bean-->
+    <bean id="audoCar1" class="com.shyfay.bean.factory.CarStaticFactory" factory-method="getCar">
+        <constructor-arg value="3"/>
+    </bean>
+    <!--实例工厂，相当于一个FactoryBean-->
+    <bean id="carFactory" class="com.shyfay.bean.factory.CarInstanceFactory">
+        <property name="beanContainer">
+            <map>
+                <entry key="1">
+                    <bean class="com.shyfay.bean.factory.Car">
+                        <property name="id" value="1" />
+                        <property name="name" value="Benz" />
+                        <property name="price" value="200" />
+                    </bean>
+                </entry>
+                <entry key="2">
+                    <bean class="com.shyfay.bean.factory.Car">
+                        <property name="id" value="2" />
+                        <property name="name" value="BMW"/>
+                        <property name="price" value="200"/>
+                    </bean>
+                </entry>
+                <entry key="3">
+                    <bean class="com.shyfay.bean.factory.Car">
+                        <property name="id" value="2" />
+                        <property name="name" value="Audo"/>
+                        <property name="price" value="500"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="benzCar2" factory-bean="carFactory" factory-method="getCar">
+        <constructor-arg value="1"/>
+    </bean>
+    <bean id="bmwCar2" factory-bean="carFactory" factory-method="getCar">
+        <constructor-arg value="2"/>
+    </bean>
+    <bean id="audoCar3" factory-bean="carFactory" factory-method="getCar">
+        <constructor-arg value="3"/>
+    </bean>
+</beans>

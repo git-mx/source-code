@@ -20,8 +20,15 @@ bean的属性有下面
     -factory-bean 调用静态工厂方法的方式创建bean
 bean的子元素
     -meta 元数据，当需要使用里面的信息时可以通过key获取
-    -lookup-method 获取器注入，是把一个方法声明为返回某种类型的bean但实际要返回的bean是在配置文件里面配置的
+    -lookup-method 就是让<lookup-method>标签中name属性指定的方法，返回<lookup-method>标签中bean属性指定的实体类型
+                   bean属性指定的类一定是非单例模式的
     -replaced-method 可以在运行时调用新的方法替换现有的方法，还能动态的更新原有方法的逻辑
     -constructor-arg 对bean自动寻找对应的构造函数，并在初始化的时候将设置的参数传入进去
     -property 类的属性字段赋值
     -qualifier 通过Qualifier指定注入bean的名称
+Spring的IOC容器其实就是一个内存中的map，map的key就是beanName，也就是<bean标签指定的id属性
+IOC容器中bean的载入过程如下：
+1.读取xml文件并获取对xml文件的验证模式
+2.根据解析得到的element节点得到对应的document对象
+3.将document对象转化成bean在IOC容器的表现形式：BeanDefinition对象
+4.将BeanDefinition注册到IOC容器中（内存中的map）

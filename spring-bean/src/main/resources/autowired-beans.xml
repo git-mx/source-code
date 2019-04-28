@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 全局的bean放在此配置文件中进行加载-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!--<bean id="student" class="com.shyfay.bean.autowired.Student">-->
-        <!--<property name="ID" value="80" />-->
-        <!--<property name="name" value="阿王" />-->
-        <!--<property name="age" value="23" />-->
-        <!--<property name="sex" value="男" />-->
-    <!--</bean>-->
-    <!--<bean id="teacher" class="com.shyfay.bean.autowired.Teacher">-->
-        <!--<property name="name" value="何老师" />-->
-        <!--<property name="age" value="43" />-->
-        <!--<property name="sex" value="女" />-->
-    <!--</bean>-->
+    <bean id="student" class="com.shyfay.bean.autowired.Student">
+        <property name="ID" value="80" />
+        <property name="name" value="阿王" />
+        <property name="age" value="23" />
+        <property name="sex" value="男" />
+    </bean>
+    <bean id="teacher" class="com.shyfay.bean.autowired.Teacher">
+        <property name="name" value="何老师" />
+        <property name="age" value="43" />
+        <property name="sex" value="女" />
+    </bean>
     <!-- 默认情况下，通过'ref’来装配bean -->
     <bean id="teachFile1" class="com.shyfay.bean.autowired.TeachFile" >
         <property name="teacher" ref="teacher" />

@@ -9,6 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 /**
+ * 用于演示bean的autowired属性
  * file1的bean没有指定autowired属性，需要通过property手动指定teacher和sudent属性
  * file2、file3、file4都指定了autowired，Spring会为其自动装配了在同一个xml配置的bean
  * 如果在配置文件中没有配置对应的teacher和student，则会抛出NullPointerException
@@ -18,7 +19,7 @@ import org.springframework.core.io.Resource;
 public class AutowiredTest {
     public static void main(String[] args){
         //BeanFactory bf = new XmlBeanFactory()
-        Resource resource = new ClassPathResource("applicationContext.xml");
+        Resource resource = new ClassPathResource("autowired-beans.xml");
         BeanFactory factory = new DefaultListableBeanFactory();
         BeanDefinitionReader reader = new XmlBeanDefinitionReader((BeanDefinitionRegistry) factory);
         reader.loadBeanDefinitions(resource);

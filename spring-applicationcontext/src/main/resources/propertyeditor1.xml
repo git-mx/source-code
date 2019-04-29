@@ -3,10 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-<bean id="dennies" class="com.shyfay.bean.replaced.PlayerOne">
-    <replaced-method name="onPlace" replacer="russ"/>
-</bean>
-
-<bean id="russ" class="com.shyfay.bean.replaced.PlayerTwo"/>
+    <!--配置1-->
+    <bean id="userManager" class="com.shyfay.ac.propertyeditor1.UserManager">
+        <property name="dateValue" value="2019-04-29" />
+    </bean>
 </beans>

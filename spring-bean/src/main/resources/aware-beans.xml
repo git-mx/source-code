@@ -4,9 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean id="dennies" class="com.shyfay.bean.replaced.PlayerOne">
-    <replaced-method name="onPlace" replacer="russ"/>
-</bean>
-
-<bean id="russ" class="com.shyfay.bean.replaced.PlayerTwo"/>
+    <bean id="hello" class="com.shyfay.bean.aware.Hello" />
+    <bean id="test" class="com.shyfay.bean.aware.TestAware" />
 </beans>

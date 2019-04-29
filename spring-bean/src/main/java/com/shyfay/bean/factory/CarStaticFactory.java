@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  静态bean工厂，相当于一个BeanFactory
+ *  静态bean工厂，相当于一个BeanFactory，
+ *  BeanFactory是最基本的IOC容器，负责生产与管理bean，它为其他具有具体的IOC容器提供最基本的规范，如
+ *  DefaultListableBeanFactory、XMLBeanFactory、ApplicationContext等都实现了BeanFactory
  * @author mx
  * @since 2019/4/28
  */

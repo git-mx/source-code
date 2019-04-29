@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+    <!--CarStaticFactory相当于一个BeanFactory，即Bean工厂-->
     <!--从BenFactory获取bean-->
     <bean id="benzCar1" class="com.shyfay.bean.factory.CarStaticFactory" factory-method="getCar">
         <constructor-arg value="1" />
@@ -16,7 +16,7 @@
     <bean id="audoCar1" class="com.shyfay.bean.factory.CarStaticFactory" factory-method="getCar">
         <constructor-arg value="3"/>
     </bean>
-    <!--实例工厂，相当于一个FactoryBean-->
+    <!--实例工厂-->
     <bean id="carFactory" class="com.shyfay.bean.factory.CarInstanceFactory">
         <property name="beanContainer">
             <map>
@@ -52,5 +52,9 @@
     </bean>
     <bean id="audoCar3" factory-bean="carFactory" factory-method="getCar">
         <constructor-arg value="3"/>
+    </bean>
+
+    <bean id="benzCar3" class="com.shyfay.bean.factory.CarFactoryBean">
+        <property name="carInfo" value="1,Benz,500"/>
     </bean>
 </beans>

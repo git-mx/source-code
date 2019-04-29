@@ -23,8 +23,10 @@ public class FactoryTest {
         reader.loadBeanDefinitions(resource);
         Car benzCar1 = factory.getBean("benzCar1", Car.class);
         Car benzCar2 = factory.getBean("benzCar2", Car.class);
+        Car benzCar3 = factory.getBean("benzCar3", Car.class);
         System.out.println("benz1:"+benzCar1.toString());
         System.out.println("benz2:"+benzCar2.toString());
+        System.out.println("benz3:"+benzCar3.toString());
 
     }
 }

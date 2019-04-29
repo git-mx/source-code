@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="classA" class="com.shyfay.bean.singletoncircledependence.ClassA" scope="singleton">
+        <property name="classB" ref="classB"/>
+    </bean>
+    <bean id="classB" class="com.shyfay.bean.singletoncircledependence.ClassB" scope="singleton">
+        <property name="classC" ref="classC"/>
+    </bean>
+    <bean id="classC" class="com.shyfay.bean.singletoncircledependence.ClassC" scope="singleton">
+        <property name="classA" ref="classA"/>
+    </bean>
+</beans>

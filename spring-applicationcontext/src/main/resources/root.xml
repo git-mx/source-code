@@ -4,9 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean id="dennies" class="com.shyfay.bean.replaced.PlayerOne">
-    <replaced-method name="onPlace" replacer="russ"/>
-</bean>
-
-<bean id="russ" class="com.shyfay.bean.replaced.PlayerTwo"/>
+    <bean id="root" class="com.shyfay.ac.Root">
+        <property name="key" value="AAAA"/>
+        <property name="val" value="BBBB"/>
+    </bean>
 </beans>

@@ -1,10 +1,11 @@
 package com.shyfay.bean.factory;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 实例bean工厂
+ * 实例bean工厂，相当于FactoryBean，
  * @author mx
  * @since 2019/4/28
  */
@@ -23,4 +24,5 @@ public class CarInstanceFactory {
     public Car getCar(int id){
         return this.beanContainer.get(id);
     }
+
 }

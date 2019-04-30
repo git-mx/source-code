@@ -10,6 +10,12 @@ ApplicationContext的功能有以下：
      1.增加对SpEL语言的支持，见实例sqel
      2.增加属性注册编辑器，见实例propertyeditor1\propertyeditor2\propertyeditor3
      3.添加ApplicationContextAwareProcessor处理器，见实例processor1\processor2
+     4.提供国际化支持 见实例locale
+     5.对Spring事件的支持 实例见source-code里的spring-event
+     6.初始化非延迟加载单例
+       这里面包含Converter、
+       冻结配置 冻结所有的bean定义，说明注册的bean定义将不被修改或进行任何进一步的处理
+       初始化非延迟加载 
   D> 子类覆盖方法做外的处理
   E> 激活各种BeanFactory处理器。
   F> 注册拦截bean创建的bean处理器，这里只是注册，真正的调用是在getBean时候。

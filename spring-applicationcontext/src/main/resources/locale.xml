@@ -3,14 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="userManager" class="com.shyfay.ac.propertyeditor3.UserManager">
-        <property name="dateValue" value="2019-04-29" />
-    </bean>
-
-    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-        <property name="propertyEditorRegistrars">
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
             <list>
-                <bean class="com.shyfay.ac.propertyeditor3.DatePropertyEditorRegister"/>
+                <value>messages</value>
             </list>
         </property>
     </bean>

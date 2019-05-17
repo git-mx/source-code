@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * Converter是非常有用的，在SpringMVC开发中经常需要使用converter来
+ * 将前端传过来的字符串转换成后端需要的对象，或者将后端对象转换成前端需要的JSON对象。
  * @author mx
  * @since 2019/4/30
  */

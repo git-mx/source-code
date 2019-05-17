@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Premain-Class: com.shyfay.agent.PerfMonAgent
+Can-Redefine-Classes: true
+Class-Path: javassist-3.8.0.GA.jar
+Main-Class: 
+

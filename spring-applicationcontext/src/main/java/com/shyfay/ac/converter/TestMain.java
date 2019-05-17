@@ -2,6 +2,9 @@ package com.shyfay.ac.converter;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.convert.support.DefaultConversionService;
+
+import java.util.Date;
 
 /**
  * @author mx
@@ -9,8 +12,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class TestMain {
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("converter.xml");
-        UserManager userManager = ctx.getBean("userManager", UserManager.class);
-        System.out.println(userManager.toString());
+        DefaultConversionService conversionService = new DefaultConversionService();
+        conversionService.addConverter(new String2DateConverter());
+        String test = "2019-01-01";
+        Date date = conversionService.convert(test, Date.class);
+        System.out.println(date);
     }
 }

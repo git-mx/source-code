@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--指定aop的代理方式-->
+    <!--dynamicproxy-target-class-->
+    <!--dynamicproxy-target-class=false时，代理方式是使用JDK的动态代理来实现。这时如果被代理的对象如果实现了某个接口，Spring则会
+    选择JDK动态代理策略动态的创建一个接口实现类（动态代理类）来代理目标对象，这时在动态代理类和实际被代理的对象类之间进行转换时
+    会抛出java.lang.ClassCastException异常，这就是为什么不将proxy-target-class设置为true时，找不到bean的原因
+    dynamicproxy-target-class=true时，如果被代理的对象实现了至少一个接口，则会使用JDK动态代理，所有该目标类实现的接口都将被代理。
+    如果被代理的对象没有实现任何接口，则创建一个CGLIB代理-->
+    <!--expose-dynamicproxy-->
+    <!--设置成true以后在内部调用也会实现aop的功能-->
+    <!--https://www.jianshu.com/p/6534945eb3b5-->
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
+    <bean id="testBean" class="com.shyfay.aop.ltw.TestBean"/>
+    <bean class="com.shyfay.aop.ltw.AspectJTest"/>
+</beans>

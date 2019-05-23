@@ -1,0 +1,43 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <!--默认监听器-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!--自定义监听器-->
+    <listener>
+        <listener-class>com.shyfay.mvc.config.CustomContextListener</listener-class>
+    </listener>
+    <!--我们可以定义多个spring-mvc.xml和多个servlet用以配置不同的SpringMVC-->
+    <!--使用默认的servlet-->
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!--使用自定义的servlet-->
+    <servlet>
+        <servlet-name>myservlet</servlet-name>
+        <servlet-class>com.shyfay.mvc.config.CustomServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>myservlet</servlet-name>
+        <url-pattern>*.hml</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--定义servlet这个IOC容器加载的类-->
+    <bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/user.do">userController</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="userController" class="com.shyfay.mvc.controller.UserController"/>
+</beans>

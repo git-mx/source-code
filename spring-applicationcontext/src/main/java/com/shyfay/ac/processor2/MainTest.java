@@ -15,7 +15,7 @@ import org.springframework.core.io.Resource;
  * Spring IOC容器允许BeanFactoryPostProcessor在容器实际实例化任何其他bean之前读取配置元数据，并有可能修改它。
  * 可以配置多个BeanFactoryPostProcessor，还可以通过设置order属性来控制BeanFactoryPostProcessor的执行次序
  * （仅当BeanFactoryPostProcessor实现了Ordered接口时才可以配置order属性）。
- * BeanFactoryPostProcessor的作用范围是容器级别的，就是只对那些杂定义它的容器内的bean生效
+ * BeanFactoryPostProcessor的作用范围是容器级别的，就是只对那些定义在它的容器内的bean生效
  * @author mx
  * @since 2019/4/29
  */
